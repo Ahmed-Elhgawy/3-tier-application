@@ -46,7 +46,10 @@ output "public_route_table_ids" {
   value = var.create_igw ? aws_route_table.public_route_table[0].id : null
 }
 output "private_route_table_ids" {
-  value = var.create_nat_gateway ? aws_route_table.private_route_table[0].id : null
+  value = var.create_nat_gateway && !var.single_nat_gateway ? aws_route_table.private_route_table[0].id : null
+}
+output "private_route_table_ids_single_nat" {
+  value = var.create_nat_gateway && var.single_nat_gateway ? aws_route_table.private_route_table_single_nat[0].id : null
 }
 output "default_route_table_id" {
   value = aws_default_route_table.vpc_default_rt.id

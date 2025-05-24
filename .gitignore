@@ -25,3 +25,4 @@ terraform.rc
 
 # Plan output files
 *.tfplan
+*.tfplan.json
